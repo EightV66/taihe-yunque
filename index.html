@@ -274,6 +274,152 @@
       .hud-hint { display: none; }
       .hud-dock { bottom: 12px; padding: 8px 10px; gap: 6px; }
     }
+
+    /* ===== Pro: 加载百分比 ===== */
+    #loading-overlay .loader-bar {
+      width: 0;
+      animation: none;
+      transition: width 0.28s ease;
+    }
+    .loader-pct {
+      font-size: 12px;
+      color: rgba(245, 211, 147, 0.75);
+      letter-spacing: 2px;
+      font-variant-numeric: tabular-nums;
+      min-height: 16px;
+    }
+
+    /* ===== Pro: 建筑讲解卡片 ===== */
+    .info-card {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-46%);
+      z-index: 20;
+      width: 336px;
+      background: linear-gradient(150deg, rgba(34, 20, 17, 0.92) 0%, rgba(17, 11, 12, 0.9) 100%);
+      border: 1px solid rgba(226, 179, 103, 0.5);
+      border-left: 4px solid #d99b38;
+      border-radius: 8px;
+      padding: 18px 20px 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.32s ease, transform 0.32s ease, visibility 0.32s;
+      pointer-events: none;
+    }
+    .info-card.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%);
+      pointer-events: auto;
+    }
+    .ic-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .ic-name {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #f8e3b4;
+      text-shadow: 0 2px 8px rgba(217, 155, 56, 0.35);
+    }
+    .ic-close {
+      appearance: none;
+      background: rgba(255, 238, 205, 0.08);
+      border: 1px solid rgba(226, 179, 103, 0.35);
+      color: #ebdbbc;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      flex: none;
+      transition: all 0.2s ease;
+    }
+    .ic-close:hover { background: rgba(184, 51, 39, 0.5); color: #fff; }
+    .ic-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #f5c36c;
+      border: 1px solid rgba(226, 179, 103, 0.4);
+      border-radius: 3px;
+      padding: 2px 8px;
+      background: rgba(217, 155, 56, 0.1);
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    .ic-body {
+      margin-top: 12px;
+      font-size: 13.5px;
+      line-height: 1.9;
+      color: rgba(246, 236, 217, 0.88);
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      text-align: justify;
+    }
+    .ic-goto { margin-top: 14px; padding: 7px 16px; }
+    .info-tip {
+      position: fixed;
+      left: 50%;
+      bottom: 96px;
+      transform: translateX(-50%) translateY(6px);
+      z-index: 9;
+      background: rgba(20, 14, 15, 0.72);
+      border: 1px solid rgba(226, 179, 103, 0.3);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(245, 216, 166, 0.85);
+      letter-spacing: 1px;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .info-tip.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ===== Pro: 移动端适配 ===== */
+    @media (max-width: 760px) {
+      .hud-header { top: 10px; left: 10px; gap: 4px; }
+      .title-card { padding: 8px 12px; border-radius: 5px; }
+      .title-main { font-size: 16px; letter-spacing: 1px; gap: 7px; }
+      .title-seal { font-size: 9px; padding: 1px 5px; }
+      .title-sub { font-size: 10px; max-width: 58vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .hud-stats { top: 10px; right: 10px; padding: 5px 8px; gap: 5px; font-size: 10px; }
+      .stat-divider { height: 10px; }
+      .hud-dock {
+        bottom: 8px;
+        width: calc(100vw - 16px);
+        padding: 7px 8px;
+        gap: 6px 8px;
+        border-radius: 8px;
+      }
+      .dock-label { display: none; }
+      .dock-divider { display: none; }
+      .dock-group { gap: 5px; flex-wrap: wrap; justify-content: center; }
+      .hud-btn { padding: 6px 10px; font-size: 11.5px; }
+      .hud-hint { display: block; bottom: auto; top: 64px; right: 10px; font-size: 10px; padding: 4px 9px; }
+      .info-card {
+        left: 12px;
+        right: 12px;
+        top: auto;
+        bottom: 96px;
+        width: auto;
+        transform: translateY(8px);
+        padding: 14px 16px 13px;
+      }
+      .info-card.show { transform: translateY(0); }
+      .ic-name { font-size: 18px; letter-spacing: 2px; }
+      .ic-body { font-size: 12.5px; line-height: 1.8; }
+      .info-tip { bottom: 150px; font-size: 11px; }
+    }
   </style>
   <script type="module">
 (function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const r of s)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function e(s){const r={};return s.integrity&&(r.integrity=s.integrity),s.referrerPolicy&&(r.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?r.credentials="include":s.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(s){if(s.ep)return;s.ep=!0;const r=e(s);fetch(s.href,r)}})();/**
@@ -4129,7 +4275,214 @@ void main() {
           col = mix(col, uTopColor, t2);
           gl_FragColor = vec4(col, 1.0);
         }
-      `});this.skyMesh=new ye(t,e),this.scene.add(this.skyMesh);const i=new dn(16,16,16);this.sunMat=new Os({color:16758892,fog:!1}),this.sunDisc=new ye(i,this.sunMat),this.scene.add(this.sunDisc)}initLights(){this.hemiLight=new um(14253932,3876912,1.05),this.hemiLight.position.set(0,120,0),this.scene.add(this.hemiLight),this.dirLight=new Xo(16751175,3.1),this.dirLight.position.set(-135,92,55),this.dirLight.castShadow=!0,this.dirLight.shadow.mapSize.width=2048,this.dirLight.shadow.mapSize.height=2048,this.dirLight.shadow.camera.near=20,this.dirLight.shadow.camera.far=380;const t=148;this.dirLight.shadow.camera.left=-t,this.dirLight.shadow.camera.right=t,this.dirLight.shadow.camera.top=t,this.dirLight.shadow.camera.bottom=-t,this.dirLight.shadow.bias=-5e-4,this.dirLight.shadow.normalBias=.04,this.scene.add(this.dirLight),this.rimLight=new Xo(8033986,.55),this.rimLight.position.set(110,65,-90),this.scene.add(this.rimLight);for(const e of this.voxelWorld.lanternPositions){const i=new dm(16739108,2.2,42,1.5);i.position.copy(e),this.scene.add(i),this.lanternLights.push(i)}this.scene.fog=new ya(fi.sunset.fogColor,fi.sunset.fogDensity)}initSmokeParticles(){const t=new dn(.75,.75,.75),e=new ki({color:15262424,transparent:!0,opacity:.45,roughness:.9});for(const i of this.voxelWorld.smokeEmitters)for(let s=0;s<18;s++){const r=new ye(t,e.clone()),a=s/18;r.position.set(i.x,i.y+a*14,i.z),this.scene.add(r),this.smokeParticles.push({mesh:r,origin:i.clone(),phase:a,speed:.22+s%3*.04,swirlOffset:s*1.1})}}initFireflyParticles(){const t=new dn(.6,.6,.6);this.fireflyMat=new Os({color:16759378,transparent:!0,opacity:.85});const e=48;for(let i=0;i<e;i++){const s=new ye(t,this.fireflyMat),r=i/e*Math.PI*2,a=18+i%7*11,o=Math.cos(r)*a,l=Math.sin(r)*a*1.3-10,h=6+i%8*5;s.position.set(o,h,l),this.scene.add(s),this.fireflyParticles.push({mesh:s,baseX:o,baseY:h,baseZ:l,phase:i*.73,speed:.6+i%5*.15})}}applyPreset(t,e=!1){const i=fi[t];if(i&&(this.currentPresetKey=t,this.targetPreset=i,e)){this.skyUniforms.uTopColor.value.setHex(i.skyTop),this.skyUniforms.uMidColor.value.setHex(i.skyMid),this.skyUniforms.uHorizonColor.value.setHex(i.skyHorizon),this.scene.fog.color.setHex(i.fogColor),this.scene.fog.density=i.fogDensity,this.dirLight.color.setHex(i.sunColor),this.dirLight.intensity=i.sunIntensity,this.dirLight.position.set(...i.sunPos),this.sunDisc.position.set(i.sunPos[0]*2.2,i.sunPos[1]*2,i.sunPos[2]*2.2),this.sunDisc.lookAt(0,0,0),this.sunMat.color.setHex(i.sunColor),this.hemiLight.color.setHex(i.ambientSky),this.hemiLight.groundColor.setHex(i.ambientGround),this.hemiLight.intensity=i.ambientIntensity;const s=this.voxelWorld.materials[Jt];s&&(s.emissiveIntensity=i.emissiveIntensity);for(const r of this.lanternLights)r.intensity=i.lanternLightIntensity;this.renderer.toneMappingExposure=i.exposure}}update(t,e){if(this.targetPreset){const s=this.targetPreset,r=Math.min(1,t*3.5);this.skyUniforms.uTopColor.value.lerp(new Ct(s.skyTop),r),this.skyUniforms.uMidColor.value.lerp(new Ct(s.skyMid),r),this.skyUniforms.uHorizonColor.value.lerp(new Ct(s.skyHorizon),r),this.scene.fog.color.lerp(new Ct(s.fogColor),r),this.scene.fog.density=Bn.lerp(this.scene.fog.density,s.fogDensity,r),this.dirLight.color.lerp(new Ct(s.sunColor),r),this.dirLight.intensity=Bn.lerp(this.dirLight.intensity,s.sunIntensity,r),this.dirLight.position.lerp(new N(...s.sunPos),r),this.sunDisc.position.set(this.dirLight.position.x*2.2,this.dirLight.position.y*2,this.dirLight.position.z*2.2),this.sunDisc.lookAt(0,0,0),this.sunMat.color.copy(this.dirLight.color),this.hemiLight.color.lerp(new Ct(s.ambientSky),r),this.hemiLight.groundColor.lerp(new Ct(s.ambientGround),r),this.hemiLight.intensity=Bn.lerp(this.hemiLight.intensity,s.ambientIntensity,r);const a=this.voxelWorld.materials[Jt];if(a){const o=Math.sin(e*2.5)*.12;a.emissiveIntensity=Bn.lerp(a.emissiveIntensity,s.emissiveIntensity+o,r)}for(let o=0;o<this.lanternLights.length;o++){const l=Math.sin(e*3.2+o)*.15;this.lanternLights[o].intensity=Bn.lerp(this.lanternLights[o].intensity,Math.max(0,s.lanternLightIntensity+l),r)}this.renderer.toneMappingExposure=Bn.lerp(this.renderer.toneMappingExposure,s.exposure,r)}for(const s of this.smokeParticles){s.phase=(s.phase+t*s.speed)%1;const r=s.phase*15,a=Math.sin(e*1.4+s.swirlOffset+s.phase*4)*(.4+s.phase*1.8),o=Math.cos(e*1.1+s.swirlOffset+s.phase*3.5)*(.4+s.phase*1.5);s.mesh.position.set(s.origin.x+a,s.origin.y+r,s.origin.z+o);const l=.5+s.phase*1.3;s.mesh.scale.set(l,l,l),s.mesh.material.opacity=(1-s.phase)*.42,s.mesh.rotation.y=e*.6+s.swirlOffset}const i=this.currentPresetKey==="day";this.fireflyMat.opacity=i?.15:.85;for(const s of this.fireflyParticles)s.mesh.position.x=s.baseX+Math.sin(e*s.speed+s.phase)*2.5,s.mesh.position.y=s.baseY+Math.cos(e*s.speed*.8+s.phase)*1.8,s.mesh.position.z=s.baseZ+Math.sin(e*s.speed*.6+s.phase*1.3)*2.5}}const Qm=document.getElementById("canvas-container"),tl=document.getElementById("loading-overlay"),el=document.getElementById("stat-voxels"),nl=document.getElementById("stat-fps"),Ca=new om,Zn=new De(42,window.innerWidth/window.innerHeight,1,900);Zn.position.set(...Ra.overview.pos);const Be=new am({antialias:!0,powerPreference:"high-performance"});Be.setSize(window.innerWidth,window.innerHeight);Be.setPixelRatio(Math.min(window.devicePixelRatio,2));Be.shadowMap.enabled=!0;Be.shadowMap.type=rl;Be.toneMapping=ol;Be.toneMappingExposure=1.08;Qm.appendChild(Be.domElement);const xe=new vm(Zn,Be.domElement);xe.target.set(...Ra.overview.target);xe.enableDamping=!0;xe.dampingFactor=.06;xe.maxPolarAngle=Math.PI*.485;xe.minDistance=18;xe.maxDistance=340;xe.autoRotate=!0;xe.autoRotateSpeed=.38;xe.update();const wa=new Pm;Im(wa);const t_=wa.buildMeshes(Ca);el&&(el.textContent=t_.toLocaleString());const kl=new Jm(Ca,Be,wa);requestAnimationFrame(()=>{tl&&tl.classList.add("hidden")});let We=null;function e_(n){const t=Ra[n];t&&(We={startPos:Zn.position.clone(),endPos:new N(...t.pos),startTarget:xe.target.clone(),endTarget:new N(...t.target),progress:0,duration:1.15})}Be.domElement.addEventListener("pointerdown",()=>{We=null});const yr=document.getElementById("camera-group");yr&&yr.addEventListener("click",n=>{const t=n.target.closest("button[data-cam]");t&&(yr.querySelectorAll(".hud-btn").forEach(e=>e.classList.remove("active")),t.classList.add("active"),e_(t.dataset.cam))});const Tr=document.getElementById("time-group");Tr&&Tr.addEventListener("click",n=>{const t=n.target.closest("button[data-time]");t&&(Tr.querySelectorAll(".hud-btn").forEach(e=>e.classList.remove("active")),t.classList.add("active"),kl.applyPreset(t.dataset.time,!1))});const bs=document.getElementById("btn-autorotate");bs&&bs.addEventListener("click",()=>{xe.autoRotate=!xe.autoRotate,bs.classList.toggle("active",xe.autoRotate),bs.textContent=`环绕导览: ${xe.autoRotate?"开":"关"}`});window.addEventListener("resize",()=>{Zn.aspect=window.innerWidth/window.innerHeight,Zn.updateProjectionMatrix(),Be.setSize(window.innerWidth,window.innerHeight)});const il=new mm;let Ar=0,Rs=0;function Vl(){requestAnimationFrame(Vl);const n=Math.min(il.getDelta(),.1),t=il.elapsedTime;if(We){We.progress+=n/We.duration;const e=Math.min(1,We.progress),i=e<.5?4*e*e*e:1-Math.pow(-2*e+2,3)/2;Zn.position.lerpVectors(We.startPos,We.endPos,i),xe.target.lerpVectors(We.startTarget,We.endTarget,i),e>=1&&(We=null)}if(xe.update(n),kl.update(n,t),Be.render(Ca,Zn),Ar++,Rs+=n,Rs>=.5){const e=Math.round(Ar/Rs);nl&&(nl.textContent=`${e} FPS`),Ar=0,Rs=0}}Vl();
+      `});this.skyMesh=new ye(t,e),this.scene.add(this.skyMesh);const i=new dn(16,16,16);this.sunMat=new Os({color:16758892,fog:!1}),this.sunDisc=new ye(i,this.sunMat),this.scene.add(this.sunDisc)}initLights(){this.hemiLight=new um(14253932,3876912,1.05),this.hemiLight.position.set(0,120,0),this.scene.add(this.hemiLight),this.dirLight=new Xo(16751175,3.1),this.dirLight.position.set(-135,92,55),this.dirLight.castShadow=!0,this.dirLight.shadow.mapSize.width=2048,this.dirLight.shadow.mapSize.height=2048,this.dirLight.shadow.camera.near=20,this.dirLight.shadow.camera.far=380;const t=148;this.dirLight.shadow.camera.left=-t,this.dirLight.shadow.camera.right=t,this.dirLight.shadow.camera.top=t,this.dirLight.shadow.camera.bottom=-t,this.dirLight.shadow.bias=-5e-4,this.dirLight.shadow.normalBias=.04,this.scene.add(this.dirLight),this.rimLight=new Xo(8033986,.55),this.rimLight.position.set(110,65,-90),this.scene.add(this.rimLight);for(const e of this.voxelWorld.lanternPositions){const i=new dm(16739108,2.2,42,1.5);i.position.copy(e),this.scene.add(i),this.lanternLights.push(i)}this.scene.fog=new ya(fi.sunset.fogColor,fi.sunset.fogDensity)}initSmokeParticles(){const t=new dn(.75,.75,.75),e=new ki({color:15262424,transparent:!0,opacity:.45,roughness:.9});for(const i of this.voxelWorld.smokeEmitters)for(let s=0;s<18;s++){const r=new ye(t,e.clone()),a=s/18;r.position.set(i.x,i.y+a*14,i.z),this.scene.add(r),this.smokeParticles.push({mesh:r,origin:i.clone(),phase:a,speed:.22+s%3*.04,swirlOffset:s*1.1})}}initFireflyParticles(){const t=new dn(.6,.6,.6);this.fireflyMat=new Os({color:16759378,transparent:!0,opacity:.85});const e=48;for(let i=0;i<e;i++){const s=new ye(t,this.fireflyMat),r=i/e*Math.PI*2,a=18+i%7*11,o=Math.cos(r)*a,l=Math.sin(r)*a*1.3-10,h=6+i%8*5;s.position.set(o,h,l),this.scene.add(s),this.fireflyParticles.push({mesh:s,baseX:o,baseY:h,baseZ:l,phase:i*.73,speed:.6+i%5*.15})}}applyPreset(t,e=!1){const i=fi[t];if(i&&(this.currentPresetKey=t,this.targetPreset=i,e)){this.skyUniforms.uTopColor.value.setHex(i.skyTop),this.skyUniforms.uMidColor.value.setHex(i.skyMid),this.skyUniforms.uHorizonColor.value.setHex(i.skyHorizon),this.scene.fog.color.setHex(i.fogColor),this.scene.fog.density=i.fogDensity,this.dirLight.color.setHex(i.sunColor),this.dirLight.intensity=i.sunIntensity,this.dirLight.position.set(...i.sunPos),this.sunDisc.position.set(i.sunPos[0]*2.2,i.sunPos[1]*2,i.sunPos[2]*2.2),this.sunDisc.lookAt(0,0,0),this.sunMat.color.setHex(i.sunColor),this.hemiLight.color.setHex(i.ambientSky),this.hemiLight.groundColor.setHex(i.ambientGround),this.hemiLight.intensity=i.ambientIntensity;const s=this.voxelWorld.materials[Jt];s&&(s.emissiveIntensity=i.emissiveIntensity);for(const r of this.lanternLights)r.intensity=i.lanternLightIntensity;this.renderer.toneMappingExposure=i.exposure}}update(t,e){if(this.targetPreset){const s=this.targetPreset,r=Math.min(1,t*3.5);this.skyUniforms.uTopColor.value.lerp(new Ct(s.skyTop),r),this.skyUniforms.uMidColor.value.lerp(new Ct(s.skyMid),r),this.skyUniforms.uHorizonColor.value.lerp(new Ct(s.skyHorizon),r),this.scene.fog.color.lerp(new Ct(s.fogColor),r),this.scene.fog.density=Bn.lerp(this.scene.fog.density,s.fogDensity,r),this.dirLight.color.lerp(new Ct(s.sunColor),r),this.dirLight.intensity=Bn.lerp(this.dirLight.intensity,s.sunIntensity,r),this.dirLight.position.lerp(new N(...s.sunPos),r),this.sunDisc.position.set(this.dirLight.position.x*2.2,this.dirLight.position.y*2,this.dirLight.position.z*2.2),this.sunDisc.lookAt(0,0,0),this.sunMat.color.copy(this.dirLight.color),this.hemiLight.color.lerp(new Ct(s.ambientSky),r),this.hemiLight.groundColor.lerp(new Ct(s.ambientGround),r),this.hemiLight.intensity=Bn.lerp(this.hemiLight.intensity,s.ambientIntensity,r);const a=this.voxelWorld.materials[Jt];if(a){const o=Math.sin(e*2.5)*.12;a.emissiveIntensity=Bn.lerp(a.emissiveIntensity,s.emissiveIntensity+o,r)}for(let o=0;o<this.lanternLights.length;o++){const l=Math.sin(e*3.2+o)*.15;this.lanternLights[o].intensity=Bn.lerp(this.lanternLights[o].intensity,Math.max(0,s.lanternLightIntensity+l),r)}this.renderer.toneMappingExposure=Bn.lerp(this.renderer.toneMappingExposure,s.exposure,r)}for(const s of this.smokeParticles){s.phase=(s.phase+t*s.speed)%1;const r=s.phase*15,a=Math.sin(e*1.4+s.swirlOffset+s.phase*4)*(.4+s.phase*1.8),o=Math.cos(e*1.1+s.swirlOffset+s.phase*3.5)*(.4+s.phase*1.5);s.mesh.position.set(s.origin.x+a,s.origin.y+r,s.origin.z+o);const l=.5+s.phase*1.3;s.mesh.scale.set(l,l,l),s.mesh.material.opacity=(1-s.phase)*.42,s.mesh.rotation.y=e*.6+s.swirlOffset}const i=this.currentPresetKey==="day";this.fireflyMat.opacity=i?.15:.85;for(const s of this.fireflyParticles)s.mesh.position.x=s.baseX+Math.sin(e*s.speed+s.phase)*2.5,s.mesh.position.y=s.baseY+Math.cos(e*s.speed*.8+s.phase)*1.8,s.mesh.position.z=s.baseZ+Math.sin(e*s.speed*.6+s.phase*1.3)*2.5}}const Qm=document.getElementById("canvas-container"),tl=document.getElementById("loading-overlay"),el=document.getElementById("stat-voxels"),nl=document.getElementById("stat-fps"),Ca=new om,Zn=new De(42,window.innerWidth/window.innerHeight,1,900);Zn.position.set(...Ra.overview.pos);const Be=new am({antialias:!0,powerPreference:"high-performance"});Be.setSize(window.innerWidth,window.innerHeight);Be.setPixelRatio(Math.min(window.devicePixelRatio,2));Be.shadowMap.enabled=!0;Be.shadowMap.type=rl;Be.toneMapping=ol;Be.toneMappingExposure=1.08;Qm.appendChild(Be.domElement);const xe=new vm(Zn,Be.domElement);xe.target.set(...Ra.overview.target);xe.enableDamping=!0;xe.dampingFactor=.06;xe.maxPolarAngle=Math.PI*.485;xe.minDistance=18;xe.maxDistance=340;xe.autoRotate=!0;xe.autoRotateSpeed=.38;xe.update();const wa=new Pm;Im(wa);const t_=wa.buildMeshes(Ca);el&&(el.textContent=t_.toLocaleString());const kl=new Jm(Ca,Be,wa);const __lb=document.querySelector(".loader-bar"),__lpct=document.getElementById("loader-pct");
+const __stages=[[10,"筑基 · 砌筑汉白玉台基"],[30,"立柱 · 朱楹列阵"],[54,"上梁 · 斗拱飞檐"],[78,"铺瓦 · 琉璃映日"],[96,"张灯 · 暮色初上"],[100,"落成 · 太和云阙"]];
+let __si=0;
+(function __stepLoader(){if(__si>=__stages.length){if(tl){tl.classList.add("hidden");setTimeout(()=>{tl.style.display="none";},900)}return}const[p,txt]=__stages[__si];if(__lb)__lb.style.width=p+"%";if(__lpct)__lpct.textContent=p+"%  "+txt;__si++;setTimeout(__stepLoader,__si<3?150:210)})();let We=null;function e_(n){const t=Ra[n];t&&(We={startPos:Zn.position.clone(),endPos:new N(...t.pos),startTarget:xe.target.clone(),endTarget:new N(...t.target),progress:0,duration:1.15})}Be.domElement.addEventListener("pointerdown",()=>{We=null});const yr=document.getElementById("camera-group");yr&&yr.addEventListener("click",n=>{const t=n.target.closest("button[data-cam]");t&&(yr.querySelectorAll(".hud-btn").forEach(e=>e.classList.remove("active")),t.classList.add("active"),e_(t.dataset.cam))});const Tr=document.getElementById("time-group");Tr&&Tr.addEventListener("click",n=>{const t=n.target.closest("button[data-time]");t&&(Tr.querySelectorAll(".hud-btn").forEach(e=>e.classList.remove("active")),t.classList.add("active"),kl.applyPreset(t.dataset.time,!1))});const bs=document.getElementById("btn-autorotate");bs&&bs.addEventListener("click",()=>{xe.autoRotate=!xe.autoRotate,bs.classList.toggle("active",xe.autoRotate),bs.textContent=`环绕导览: ${xe.autoRotate?"开":"关"}`});window.addEventListener("resize",()=>{Zn.aspect=window.innerWidth/window.innerHeight,Zn.updateProjectionMatrix(),Be.setSize(window.innerWidth,window.innerHeight)});const il=new mm;let Ar=0,Rs=0;function Vl(){requestAnimationFrame(Vl);const n=Math.min(il.getDelta(),.1),t=il.elapsedTime;if(We){We.progress+=n/We.duration;const e=Math.min(1,We.progress),i=e<.5?4*e*e*e:1-Math.pow(-2*e+2,3)/2;Zn.position.lerpVectors(We.startPos,We.endPos,i),xe.target.lerpVectors(We.startTarget,We.endTarget,i),e>=1&&(We=null)}if(xe.update(n),kl.update(n,t),Be.render(Ca,Zn),Ar++,Rs+=n,Rs>=.5){const e=Math.round(Ar/Rs);nl&&(nl.textContent=`${e} FPS`),Ar=0,Rs=0}}Vl();
+
+/* ============================================================
+   太和云阙 · Pro 增强模块
+   1) 点击殿宇讲解（手写 ray-AABB，不依赖 Raycaster）
+   2) WebAudio 程序化仙乐（五声音阶铁马风铃 + 环境铺底，零素材）
+   3) 触控提示适配
+   ============================================================ */
+{
+  /* ---------- 建筑讲解热区（坐标依据各机位 target，h 为半宽） ---------- */
+  const __H = [
+    { id:"shanmen", cam:"shanmen", name:"正阳山门", tag:"中轴第一进 · 五脊三阙",
+      c:[0,13,66], h:[26,15,15],
+      txt:"山门为整座宫苑的中轴起点，殿顶五脊并列、辟三阙门洞，两侧接抄手游廊与朝房。古制文武至此落轿下马、整肃衣冠，三重院落由此沿中轴线层层展开。" },
+    { id:"mainhall", cam:"mainhall", name:"太和主殿", tag:"中轴第二进 · 九五之制",
+      c:[0,18,-20], h:[52,20,36],
+      txt:"主殿踞三层汉白玉高台之上，面阔九间、重檐庑殿顶，覆黄琉璃瓦，为全城规制最高的建筑。檐下斗拱层层出跳、鎏金彩绘，殿前云龙御路，尽显礼制威仪。" },
+    { id:"bell", cam:"belldrum", name:"钟楼", tag:"晨钟暮鼓 · 东钟西鼓",
+      c:[48,18,36], h:[11,16,11],
+      txt:"钟鼓二楼形制相同，皆为双层重檐楼阁，东西对峙于庭院两侧。古制晨击钟、暮擂鼓以司晨昏，城楼开闭之间，整座宫城的时辰便有了声息。" },
+    { id:"drum", cam:"belldrum", name:"鼓楼", tag:"晨钟暮鼓 · 东钟西鼓",
+      c:[-48,18,36], h:[11,16,11],
+      txt:"钟鼓二楼形制相同，皆为双层重檐楼阁，东西对峙于庭院两侧。古制晨击钟、暮擂鼓以司晨昏，城楼开闭之间，整座宫城的时辰便有了声息。" },
+    { id:"pagoda", cam:"pagoda", name:"万佛宝塔", tag:"中轴北端 · 收束一城",
+      c:[0,40,-82], h:[22,42,22],
+      txt:"宝塔为多层楼阁式塔，塔檐层层收分、飞檐上挑，檐角悬挂铁马风铃，风过则铃鸣；塔刹高耸刺空，立于中轴北端，是全城天际线的收束之笔。" },
+    { id:"lion-l", cam:"lions", name:"金水石狮", tag:"御桥前列 · 一雄一雌",
+      c:[-20,9,80], h:[13,9,13],
+      txt:"金水桥畔列石狮一对：雄狮踏绣球，象征寰宇一统；雌狮抚幼崽，寓意子嗣绵长。桥下金水河弯环抱城，为宫城最前方的礼仪与风水屏障。" },
+    { id:"lion-r", cam:"lions", name:"金水石狮", tag:"御桥前列 · 一雄一雌",
+      c:[20,9,80], h:[13,9,13],
+      txt:"金水桥畔列石狮一对：雄狮踏绣球，象征寰宇一统；雌狮抚幼崽，寓意子嗣绵长。桥下金水河弯环抱城，为宫城最前方的礼仪与风水屏障。" }
+  ];
+
+  function __rayAABB(ro, rd, c, h) {
+    let tmin = -1e9, tmax = 1e9;
+    for (let k = 0; k < 3; k++) {
+      const o = ro[k], d = rd[k], lo = c[k] - h[k], hi = c[k] + h[k];
+      if (Math.abs(d) < 1e-8) { if (o < lo || o > hi) return null; }
+      else {
+        let t1 = (lo - o) / d, t2 = (hi - o) / d;
+        if (t1 > t2) { const q = t1; t1 = t2; t2 = q; }
+        if (t1 > tmin) tmin = t1;
+        if (t2 < tmax) tmax = t2;
+        if (tmin > tmax) return null;
+      }
+    }
+    if (tmax < 0) return null;
+    return tmin >= 0 ? tmin : 0;
+  }
+
+  const __v = new N();
+  function __pick(cx, cy) {
+    __v.set((cx / window.innerWidth) * 2 - 1, -(cy / window.innerHeight) * 2 + 1, 0.5).unproject(Zn);
+    const ro = [Zn.position.x, Zn.position.y, Zn.position.z];
+    let dx = __v.x - ro[0], dy = __v.y - ro[1], dz = __v.z - ro[2];
+    const L = Math.hypot(dx, dy, dz) || 1;
+    const rd = [dx / L, dy / L, dz / L];
+    let best = null, bt = 1e9;
+    for (const hs of __H) {
+      const t = __rayAABB(ro, rd, hs.c, hs.h);
+      if (t !== null && t < bt) { bt = t; best = hs; }
+    }
+    return best;
+  }
+
+  /* ---------- 讲解卡片 ---------- */
+  const __card = document.getElementById("info-card");
+  const __cName = document.getElementById("ic-name");
+  const __cTag = document.getElementById("ic-tag");
+  const __cBody = document.getElementById("ic-body");
+  const __tip = document.getElementById("info-tip");
+  let __curCam = "overview";
+
+  function __showCard(hs) {
+    __cName.textContent = hs.name;
+    __cTag.textContent = hs.tag;
+    __cBody.textContent = hs.txt;
+    __curCam = hs.cam;
+    __card.classList.add("show");
+    __tip.classList.remove("show");
+  }
+  function __hideCard() { __card.classList.remove("show"); }
+
+  document.getElementById("ic-close").addEventListener("click", __hideCard);
+  document.getElementById("ic-goto").addEventListener("click", () => {
+    e_(__curCam);
+    const __grp = document.getElementById("camera-group");
+    if (__grp) __grp.querySelectorAll(".hud-btn").forEach(b => b.classList.toggle("active", b.dataset.cam === __curCam));
+  });
+
+  let __pd = null, __hoverT = 0;
+  Be.domElement.addEventListener("pointerdown", e => { __pd = { x: e.clientX, y: e.clientY, t: performance.now() }; });
+  Be.domElement.addEventListener("pointerup", e => {
+    if (!__pd) return;
+    const moved = (e.clientX - __pd.x) ** 2 + (e.clientY - __pd.y) ** 2;
+    const dt = performance.now() - __pd.t;
+    __pd = null;
+    if (moved > 36 || dt > 700) return;
+    const hit = __pick(e.clientX, e.clientY);
+    if (hit) __showCard(hit); else __hideCard();
+  });
+  Be.domElement.addEventListener("pointermove", e => {
+    if (e.buttons > 0) return;
+    const now = performance.now();
+    if (now - __hoverT < 70) return;
+    __hoverT = now;
+    Be.domElement.style.cursor = __pick(e.clientX, e.clientY) ? "pointer" : "";
+  });
+
+  /* 首次进入提示气泡 */
+  setTimeout(() => {
+    if (!__card.classList.contains("show")) __tip.classList.add("show");
+    setTimeout(() => __tip.classList.remove("show"), 6500);
+  }, 2600);
+
+  /* ---------- WebAudio 程序化仙乐 ---------- */
+  let __AC = null, __master = null, __soundOn = false, __initAt = 0;
+  const __btnSound = document.getElementById("btn-sound");
+  const __scale = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5]; /* 宫商角徵羽 + 高宫 */
+
+  function __bell(freq, dur, vol) {
+    if (!__AC) return;
+    const t0 = __AC.currentTime;
+    const o = __AC.createOscillator(), g = __AC.createGain();
+    o.type = "sine"; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.linearRampToValueAtTime(vol, t0 + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(__master); o.start(t0); o.stop(t0 + dur + 0.1);
+    const o2 = __AC.createOscillator(), g2 = __AC.createGain();
+    o2.type = "triangle"; o2.frequency.value = freq * 2.01;
+    g2.gain.setValueAtTime(0.0001, t0);
+    g2.gain.linearRampToValueAtTime(vol * 0.22, t0 + 0.012);
+    g2.gain.exponentialRampToValueAtTime(0.0001, t0 + dur * 0.55);
+    o2.connect(g2); g2.connect(__master); o2.start(t0); o2.stop(t0 + dur);
+  }
+
+  function __chimeLoop() {
+    if (__AC && __soundOn && __AC.state === "running") {
+      const notes = Math.random() < 0.28 ? 2 : 1;
+      for (let i = 0; i < notes; i++) {
+        setTimeout(() => __bell(
+          __scale[Math.floor(Math.random() * __scale.length)],
+          1.3 + Math.random() * 1.7,
+          0.055 + Math.random() * 0.04
+        ), i * 300);
+      }
+    }
+    setTimeout(__chimeLoop, 2600 + Math.random() * 4800);
+  }
+
+  function __initAudio() {
+    if (__AC) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    __AC = new AC();
+    __master = __AC.createGain();
+    __master.gain.value = 0;
+    __master.connect(__AC.destination);
+    /* 低频环境铺底：宫苑空寂之声 */
+    [[55, 0.016], [82.41, 0.011], [110, 0.005]].forEach(([f, v], idx) => {
+      const o = __AC.createOscillator(), g = __AC.createGain();
+      o.type = "sine"; o.frequency.value = f; g.gain.value = v;
+      const lfo = __AC.createOscillator(), lg = __AC.createGain();
+      lfo.frequency.value = 0.05 + idx * 0.04 + Math.random() * 0.03;
+      lg.gain.value = v * 0.55;
+      lfo.connect(lg); lg.connect(g.gain);
+      o.connect(g); g.connect(__master);
+      o.start(); lfo.start();
+    });
+    __chimeLoop();
+  }
+
+  function __setSound(on) {
+    __soundOn = on;
+    __btnSound.textContent = on ? "仙乐: 开" : "仙乐: 关";
+    __btnSound.classList.toggle("active", on);
+    if (!__AC) return;
+    if (on) {
+      __AC.resume();
+      __master.gain.cancelScheduledValues(__AC.currentTime);
+      __master.gain.setTargetAtTime(1.0, __AC.currentTime, 1.2);
+    } else {
+      __master.gain.setTargetAtTime(0.0, __AC.currentTime, 0.25);
+    }
+  }
+
+  window.addEventListener("pointerdown", () => {
+    if (!__AC) { __initAt = performance.now(); __initAudio(); __setSound(true); }
+    else if (__AC.state === "suspended" && __soundOn) __AC.resume();
+  }, { capture: true, passive: true });
+
+  __btnSound.addEventListener("click", () => {
+    if (!__AC) { __initAudio(); __setSound(true); return; }
+    if (performance.now() - __initAt < 450) { __setSound(true); return; }
+    __setSound(!__soundOn);
+  });
+
+  /* ---------- 触控设备提示文案 ---------- */
+  if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+    const __hintEl = document.getElementById("hud-hint");
+    if (__hintEl) __hintEl.textContent = "单指旋转 · 双指缩放平移 · 点按殿宇看讲解";
+  }
+}
 
 </script>
 </head>
@@ -4138,6 +4491,7 @@ void main() {
     <div class="loader-title">太和云阙</div>
     <div class="loader-sub">正在构筑中式古典体素建筑群...</div>
     <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    <div class="loader-pct" id="loader-pct">0%</div>
   </div>
 
   <div id="canvas-container"></div>
@@ -4197,12 +4551,25 @@ void main() {
 
     <div class="dock-group">
       <button class="hud-btn active" id="btn-autorotate">环绕导览: 开</button>
+      <button class="hud-btn" id="btn-sound">仙乐: 关</button>
     </div>
   </nav>
 
-  <div class="hud-hint">
-    左键拖拽旋转 · 右键平移 · 滚轮缩放
+  <div class="hud-hint" id="hud-hint">
+    左键拖拽旋转 · 右键平移 · 滚轮缩放 · 点击殿宇看讲解
   </div>
+
+  <div class="info-tip" id="info-tip">点击任意殿宇，可查看营造讲解</div>
+
+  <aside class="info-card" id="info-card">
+    <div class="ic-head">
+      <span class="ic-name" id="ic-name"></span>
+      <button class="ic-close" id="ic-close" aria-label="关闭">×</button>
+    </div>
+    <span class="ic-tag" id="ic-tag"></span>
+    <div class="ic-body" id="ic-body"></div>
+    <button class="hud-btn ic-goto" id="ic-goto">近赏此景 →</button>
+  </aside>
 
 </body>
 </html>
